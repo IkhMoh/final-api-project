@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-sky-300">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/css/tw-elements.min.css" />
+    <!-- google fons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <!--/// google fons/// -->
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <!--   axios -->
+    <script src="/node_modules/axios/dist/axios.min.js"></script>
+    <!--   axios //// -->
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                fontFamily: {
+                    sans: ["Roboto", "sans-serif"],
+                    body: ["Roboto", "sans-serif"],
+                    mono: ["ui-monospace", "monospace"],
+                },
+            },
+            corePlugins: {
+                preflight: false,
+            },
+        };
+    </script>
+
+</head>
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+        /* for Chrome, Safari, and Opera */
+
+    }
+</style>
+
+<body class="overflow-scroll bg-sky-300  ">
+    <!--  alert -->
+    <div id="good">
+
+    </div>
+    <!--/ alert /-->
+    <section class="text-black   container    ">
+        <!-- Modal -->
+        <!-- add new model -->
+        <div data-twe-modal-init
+            class="fixed left-0  top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+            id="addNew-modal" tabindex="-1" aria-labelledby="exampleModalVaryingLabel" aria-hidden="true">
+
+            <div data-twe-modal-dialog-ref
+                class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+                <div
+                    class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-4 outline-none dark:bg-surface-dark">
+                    <div
+                        class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 p-4 dark:border-white/10">
+                        <h5 class="text-xl font-medium leading-normal text-surface dark:text-white"
+                            id="exampleModalVaryingLabel">
+                            Create A New Poste
+                        </h5>
+                        <button type="button"
+                            class="box-content rounded-none border-none text-neutral-500 hover:text-neutral-800 hover:no-underline focus:text-neutral-800 focus:opacity-100 focus:shadow-none focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:text-neutral-300"
+                            data-twe-modal-dismiss aria-label="Close">
+                            <span class="[&>svg]:h-6 [&>svg]:w-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="relative flex-auto p-4" data-twe-modal-body-ref>
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name"
+                                    class="text-neutral-500 dark:text-neutral-400">Taitel:</label>
+                                <input value="" type="text"
+                                    class="relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="title" />
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="border border-gray-400 w-full h-20 rounded-md resize-none" name=""
+                                    id="body">
+
+                                 </textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="text-neutral-500 dark:text-neutral-400">imge:</label>
+                                <input value="" type="file"
+                                    class="relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding   py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="imge" />
+                            </div>
+                        </form>
+                    </div>
+                    <div
+                        class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 p-4 dark:border-white/10">
+                        <button type="button"
+                            class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-200 focus:bg-primary-accent-200 focus:outline-none focus:ring-0 active:bg-primary-accent-200 dark:bg-primary-300 dark:hover:bg-primary-400 dark:focus:bg-primary-400 dark:active:bg-primary-400"
+                            data-twe-modal-dismiss data-twe-ripple-init data-twe-ripple-color="light">
+                            Close
+                        </button>
+                        <button type="button" onclick="addNewPoste()" id="ff"
+                            class=" ms-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                            data-twe-ripple-init data-twe-ripple-color="light">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//add new model// -->
+        <!-- register -->
+        <div data-twe-modal-init
+            class="fixed left-0  top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+            id="regester-modall" tabindex="-1" aria-labelledby="exampleModalVaryingLabel" aria-hidden="true">
+
+            <div data-twe-modal-dialog-ref
+                class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+                <div
+                    class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-4 outline-none dark:bg-surface-dark">
+                    <div
+                        class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 p-4 dark:border-white/10">
+                        <h5 class="text-xl font-medium leading-normal text-surface dark:text-white"
+                            id="exampleModalVaryingLabel">
+                            Register
+                        </h5>
+                        <button type="button"
+                            class="box-content rounded-none border-none text-neutral-500 hover:text-neutral-800 hover:no-underline focus:text-neutral-800 focus:opacity-100 focus:shadow-none focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:text-neutral-300"
+                            data-twe-modal-dismiss aria-label="Close">
+                            <span class="[&>svg]:h-6 [&>svg]:w-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="relative flex-auto p-4" data-twe-modal-body-ref>
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="text-neutral-500 dark:text-neutral-400">imge:</label>
+                                <input value="" type="file"
+                                    class="relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding   py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="imgeprofaile" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="text-neutral-500 dark:text-neutral-400">name:</label>
+                                <input value="" type="text"
+                                    class="relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="name" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name"
+                                    class="text-neutral-500 dark:text-neutral-400">Username:</label>
+                                <input value="" type="text"
+                                    class="relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="username" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text"
+                                    class="text-neutral-500 dark:text-neutral-400">Password:</label>
+                                <input value="" type="password"
+                                    class="relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="password" />
+                            </div>
+                        </form>
+                    </div>
+                    <div
+                        class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 p-4 dark:border-white/10">
+                        <button type="button"
+                            class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-200 focus:bg-primary-accent-200 focus:outline-none focus:ring-0 active:bg-primary-accent-200 dark:bg-primary-300 dark:hover:bg-primary-400 dark:focus:bg-primary-400 dark:active:bg-primary-400"
+                            data-twe-modal-dismiss data-twe-ripple-init data-twe-ripple-color="light">
+                            Close
+                        </button>
+                        <button type="button" onclick="regester()" id="ff"
+                            class=" ms-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                            data-twe-ripple-init data-twe-ripple-color="light">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--// register// -->
+        <!-- Login -->
+        <div data-twe-modal-init
+            class="fixed left-0  top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+            id="login-modall" tabindex="-1" aria-labelledby="exampleModalVaryingLabel" aria-hidden="true">
+            <div data-twe-modal-dialog-ref
+                class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+                <div
+                    class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-4 outline-none dark:bg-surface-dark">
+                    <div
+                        class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 p-4 dark:border-white/10">
+                        <h5 class="text-xl font-medium leading-normal text-surface dark:text-white"
+                            id="exampleModalVaryingLabel">
+                            Login
+                        </h5>
+                        <button type="button"
+                            class="box-content rounded-none border-none text-neutral-500 hover:text-neutral-800 hover:no-underline focus:text-neutral-800 focus:opacity-100 focus:shadow-none focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus:text-neutral-300"
+                            data-twe-modal-dismiss aria-label="Close">
+                            <span class="[&>svg]:h-6 [&>svg]:w-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="relative flex-auto p-4" data-twe-modal-body-ref>
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name"
+                                    class="text-neutral-500 dark:text-neutral-400">Username:</label>
+                                <input value="" type="text"
+                                    class="relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="usernamee" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text"
+                                    class="text-neutral-500 dark:text-neutral-400">Password:</label>
+                                <input value="" type="password"
+                                    class="bg relative m-0 -me-0.5 block w-full flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-inset focus:outline-none dark:border-neutral-500 dark:bg-body-dark dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:autofill:shadow-autofill dark:focus:border-primary"
+                                    id="passwordd" />
+                            </div>
+                        </form>
+                    </div>
+                    <div
+                        class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 p-4 dark:border-white/10">
+                        <button type="button"
+                            class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-200 focus:bg-primary-accent-200 focus:outline-none focus:ring-0 active:bg-primary-accent-200 dark:bg-primary-300 dark:hover:bg-primary-400 dark:focus:bg-primary-400 dark:active:bg-primary-400"
+                            data-twe-modal-dismiss data-twe-ripple-init data-twe-ripple-color="light">
+                            Close
+                        </button>
+                        <button type="button" onclick="LoginBtnClick()" id="ff"
+                            class=" ms-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                            data-twe-ripple-init data-twe-ripple-color="light">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //Login/// -->
+
+        <!-- // Modal // -->
+        <div class="  fixed container mx-auto px-56">
+            <!-- nav par  -->
+            <nav class="  shadow-xl flex justify-between rounded font-bold  h-14 bg-white pt-3 px-4">
+                <div class="space-x-6">
+
+                    <a href="index.html" class="text-2xl ml-26">jacob.</a>
+                    <a href="index.html" class=" hover:text-cyan-600 transition"> Home</a>
+                    <a onclick="clickprofile()" class=" hover:text-cyan-600 transition">Profile</a>
+                </div>
+                <!-- for not logen  -->
+                <div class="mb-2 " id="logenBtn">
+                    <button type="button" data-twe-toggle="modal" data-twe-target="#login-modall"
+                        class="  rounded-md mr-2 px-4   text-sky-400 border-2 border-sky-400 hover:bg-sky-400 hover:text-black transition">
+                        Login
+                    </button>
+                    <button data-twe-toggle="modal" data-twe-target="#regester-modall"
+                        class="rounded-md px-4 border-2 text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-black transition">Register
+                    </button>
+                </div>
+                <!-- //for not logen//  -->
+                <!-- for logen -->
+                <div class="" id="LogoutBtn">
+                    <img id="imgpro" src="/img/man-user-circle-black-icon.png" class="h-9 w-9 mr-1.5 rounded-full"
+                        alt="">
+                    <h1 id="user" class="mr-2 mt-1.5">@mohamed</h1>
+                    <button onclick="LogoutBtn()"
+                        class="rounded-md px-4  mb-2 border-2 text-red-500 border-red-500 hover:bg-red-500 hover:text-white transition">Logout
+                    </button>
+                </div>
+                <!-- //for logen// -->
+            </nav>
+            <!-- // nav oar // -->
+        </div>
+    </section>
+    
+    <section class="text-black    ">
+        <div class="  mx-auto px-56 ml-44 pt-28">
+            <h1 class="text-4xl font-bold ">@<span id="usernameone">ikhmoh</span>_post</h1>
+
+        </div>
+        <!-- post -->
+        <div class=" container flex justify-center  mx-auto px-40 ">
+            <div id="posts" class=" w-3/5 mt-3 ">
+                <div id="post" class=" shadow mt-6  bg-white  rounded-t-lg  shadow-secondary-1 ">
+                    <div class="  border-b-2 font-bold border-gray-400 px-3 py-1  dark:border-white/10">
+                        <img src="/img/man-user-circle-black-icon.png" class="h-10 w-10 mr-1 inline" alt="">
+                        <span class="mt-2">
+                            @mohamed
+                        </span>
+
+                    </div>
+                    <div class="p-1 ">
+                        <img class="h-72  w-full rounded-md" src="/img/pexels-souvenirpixels-414612.jpg" alt="">
+                        <h1 class=" dark:border-white/10 dark:text-neutral-300  text-surface/75">
+                            2 min ago
+                        </h1>
+                        <h5 class="text-black font-bold text-2xl">
+                            Hello
+                        </h5>
+                        <p class="border-gray-500 pb-2 border-b-2">
+                            Lorem ipsum dolor assumenda laudantium expedita dolor eius, quo optio fugiat dolorem
+                            quaerat nobis placeat odit debitis nemo voluptates blanditiis rem quos aut.
+                        </p>
+                    </div>
+
+                    <div class="flex">
+                        <i class="fa-solid fa-pen pl-4 pt-2"></i>
+                        <p class="px-2 pt-1 pb-3">
+                            (3) comments
+                        </p>
+                    </div>
+                </div>
+                <div id="comends" class="rounded-b-lg">
+                    <!-- comed -->
+                    <div id="comend" class="p-2 bg-sky-100 py-2 ">
+                        <div class="flex ">
+                            <img src="/img/man-user-circle-black-icon.png" class="h-8 w-8 mr-1.5 rounded-full" alt="">
+
+                            <h1 class="mt-1 font-bold">@ikhmoh</h1>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis?</p>
+                    </div>
+
+                    <!--// comed// -->
+
+                </div>
+            </div>
+        </div>
+        <!-- //post// -->
+    </section>
+    <!-- //post// -->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/js/tw-elements.umd.min.js"></script>
+    <script src="post.js"></script>
+ 
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+{
+    "cSpell.words": [
+        "deltastask"
+    ],
+    "notebook.defaultFormatter": "HookyQR.beautify",
+    "editor.defaultFormatter": "HookyQR.beautify",
+    "editor.defaultFoldingRangeProvider": "HookyQR.beautify"
+}
